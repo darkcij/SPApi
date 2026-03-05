@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07B90DC4-2652-4E16-9510-DB295DCB93D9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SPApi</RootNamespace>
+    <AssemblyName>SPApi</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>
+    </DocumentationFile>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mysql.data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Api\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.23.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.23.8.0\lib\net472\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.9.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.119.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.0\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Formats.Asn1, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.9.0.0\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.0\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.0\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.0\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.0\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="websocket-sharp, Version=1.0.4.0, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocketSharpFork.1.0.4.0\lib\net35\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net48\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.9.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.9\lib\net48\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Declaration\Enums\BarcodeType.cs" />
+    <Compile Include="Declaration\Enums\CanonicalDataTypes.cs" />
+    <Compile Include="Declaration\Enums\OralceVersion.cs" />
+    <Compile Include="Declaration\Enums\DatabaseType.cs" />
+    <Compile Include="Declaration\Enums\DateName.cs" />
+    <Compile Include="Declaration\Enums\DeviceStateType.cs" />
+    <Compile Include="Declaration\Structs\DatabaseInfo.cs" />
+    <Compile Include="Declaration\Structs\INI_Info.cs" />
+    <Compile Include="Declaration\Structs\OpcInfo.cs" />
+    <Compile Include="Declaration\Structs\SerialPortInfo.cs" />
+    <Compile Include="Declaration\Structs\SocketInfo.cs" />
+    <Compile Include="Commons\EnvironmentSetting.cs" />
+    <Compile Include="Commons\OneBasedArray.cs" />
+    <Compile Include="Customs\PropertyGrid\DictionaryPropertyGridAdapter.cs" />
+    <Compile Include="Commons\Common.cs" />
+    <Compile Include="Commons\ControlCommon.cs" />
+    <Compile Include="Declaration\CommonFlags.cs" />
+    <Compile Include="Customs\PropertyGrid\DictionaryPropertyDescriptor.cs" />
+    <Compile Include="Commons\INI.cs" />
+    <Compile Include="Controls\BackUp\SpBackUp.cs" />
+    <Compile Include="Controls\Databases\AS400DB.cs" />
+    <Compile Include="Controls\Databases\MYSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\MYSQL.Designer.cs">
+      <DependentUpon>MYSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\MYSQLDB.cs" />
+    <Compile Include="Controls\Databases\MSSQLDB.cs" />
+    <Compile Include="Controls\Databases\MSSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\MSSQL.Designer.cs">
+      <DependentUpon>MSSQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\Oracle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\Oracle.Designer.cs">
+      <DependentUpon>Oracle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\QueryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\QueryView.designer.cs">
+      <DependentUpon>QueryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dialog\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialog\InputBox.designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dialog\UserChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialog\UserChange.designer.cs">
+      <DependentUpon>UserChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Plc\OpcServer\Opc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Plc\OpcServer\Opc.designer.cs">
+      <DependentUpon>Opc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Plc\OpcServer\OpcView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Plc\OpcServer\OpcView.designer.cs">
+      <DependentUpon>OpcView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Serials\SerialView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Serials\SerialView.designer.cs">
+      <DependentUpon>SerialView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Serials\Serial.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Serials\Serial.designer.cs">
+      <DependentUpon>Serial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\AS400.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\AS400.designer.cs">
+      <DependentUpon>AS400.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\DatabaseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\DatabaseView.designer.cs">
+      <DependentUpon>DatabaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Databases\SQLite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Databases\SQLite.designer.cs">
+      <DependentUpon>SQLite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dialog\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialog\MsgBox.designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\JObject.cs" />
+    <Compile Include="Controls\Sockets\JsonConvert.cs" />
+    <Compile Include="Controls\Sockets\MessageEventArgs.cs" />
+    <Compile Include="Controls\Sockets\WsClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\WsClient.designer.cs">
+      <DependentUpon>WsClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\WsServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\WsServer.designer.cs">
+      <DependentUpon>WsServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\LogBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\LogBox.Designer.cs">
+      <DependentUpon>LogBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\SPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\SPanel.Designer.cs">
+      <DependentUpon>SPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\SPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\SPictureBox.Designer.cs">
+      <DependentUpon>SPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\SShape.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\SShape.Designer.cs">
+      <DependentUpon>SShape.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\STrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\STrackBar.Designer.cs">
+      <DependentUpon>STrackBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\TenKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\TenKey.designer.cs">
+      <DependentUpon>TenKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dio\E1212.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Dio\E1212.designer.cs">
+      <DependentUpon>E1212.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Dio\E1212View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dio\E1212View.designer.cs">
+      <DependentUpon>E1212View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Log\LogCtl.Designer.cs">
+      <DependentUpon>LogCtl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Log\Logger.cs" />
+    <Compile Include="Controls\Log\LogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Log\LogCtl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Log\LogView.Designer.cs">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\DataView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\DataView.designer.cs">
+      <DependentUpon>DataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\DefaultProtocol.cs" />
+    <Compile Include="Controls\Sockets\iProtocol.cs" />
+    <Compile Include="Controls\Sockets\SimpleProtocol.cs" />
+    <Compile Include="Controls\Sockets\SocketObject.cs" />
+    <Compile Include="Controls\Sockets\SocketView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\SocketView.designer.cs">
+      <DependentUpon>SocketView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\SocketClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\SocketClient.designer.cs">
+      <DependentUpon>SocketClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sockets\SocketServer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Sockets\SocketServer.designer.cs">
+      <DependentUpon>SocketServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\SButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\SButton.Designer.cs">
+      <DependentUpon>SButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\UI\SGraphics.cs" />
+    <Compile Include="Controls\UI\SLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\SLabel.Designer.cs">
+      <DependentUpon>SLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commons\Extensions\ClassExtensions.cs" />
+    <Compile Include="Commons\Extensions\ControlExtensions.cs" />
+    <Compile Include="Commons\NativeMethods\NativeMethods.cs" />
+    <Compile Include="Commons\NativeMethods\SafeNativeMethod.cs" />
+    <Compile Include="Commons\NativeMethods\UnsafeNativeMethod.cs" />
+    <Compile Include="Controls\UI\TLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\UI\TLabel.Designer.cs">
+      <DependentUpon>TLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ULink\kgjULinkParser.cs" />
+    <Compile Include="Controls\ULink\KgsULinkParser.cs" />
+    <Compile Include="Controls\ULink\ULinkObject.cs" />
+    <Compile Include="Controls\ULink\ULinkView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ULink\ULinkView.designer.cs">
+      <DependentUpon>ULinkView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ULink\ULinkClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ULink\ULinkClient.designer.cs">
+      <DependentUpon>ULinkClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ftps\FtpClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Version.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Oracle.ManagedDataAccess.Client.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\left_green.png" />
+    <None Include="Resources\left_red.png" />
+    <None Include="Resources\right_green.png" />
+    <None Include="Resources\right_red.png" />
+    <None Include="Resources\UserChange.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Databases\MYSQL.resx">
+      <DependentUpon>MYSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\MSSQL.resx">
+      <DependentUpon>MSSQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\Oracle.resx">
+      <DependentUpon>Oracle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\QueryView.resx">
+      <DependentUpon>QueryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialog\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialog\UserChange.resx">
+      <DependentUpon>UserChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Plc\OpcServer\Opc.resx">
+      <DependentUpon>Opc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Plc\OpcServer\OpcView.resx">
+      <DependentUpon>OpcView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Serials\SerialView.resx">
+      <DependentUpon>SerialView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Serials\Serial.resx">
+      <DependentUpon>Serial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\AS400.resx">
+      <DependentUpon>AS400.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\DatabaseView.resx">
+      <DependentUpon>DatabaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Databases\SQLite.resx">
+      <DependentUpon>SQLite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialog\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\WsClient.resx">
+      <DependentUpon>WsClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\WsServer.resx">
+      <DependentUpon>WsServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UI\LogBox.resx">
+      <DependentUpon>LogBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UI\SButton.resx">
+      <DependentUpon>SButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\UI\TenKey.resx">
+      <DependentUpon>TenKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dio\E1212.resx">
+      <DependentUpon>E1212.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dio\E1212View.resx">
+      <DependentUpon>E1212View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Log\LogCtl.resx">
+      <DependentUpon>LogCtl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Log\LogView.resx">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\DataView.resx">
+      <DependentUpon>DataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\SocketView.resx">
+      <DependentUpon>SocketView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\SocketClient.resx">
+      <DependentUpon>SocketClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Sockets\SocketServer.resx">
+      <DependentUpon>SocketServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ULink\ULinkView.resx">
+      <DependentUpon>ULinkView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ULink\ULinkClient.resx">
+      <DependentUpon>ULinkClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Down.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_FullScreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Min.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_Up.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_WinScreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="OPCAutomation">
+      <Guid>{28E68F91-8D75-11D1-8DC3-3C302A000000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <Content Include="SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(TargetDir)\Library\"
+move "$(TargetDir)*$(TargetExt)" "$(TargetDir)\Library\"
+move "$(TargetDir)*.xml" "$(TargetDir)\Library\"
+move "$(TargetDir)\Library\SpApi.dll" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
